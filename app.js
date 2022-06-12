@@ -118,6 +118,28 @@ devide.addEventListener("click", () => {
     input[1].value = `÷`;
 })
 
+const squared = document.querySelector("#squared");
+squared.addEventListener("click", () => {
+    num1 = (Number(input[2].value));
+    input[2].value = ``;
+    sign = 5;
+    num.value = num1;
+    input[1].value = `^`;
+})
+
+const plusAndMinus = document.querySelector("#plusAndMinus")
+PandM = false;
+plusAndMinus.addEventListener("click", () => {
+    if (PandM == false) {
+        A = input[2].value;
+        input[2].value = '-' + input[2].value;
+        PandM = true;
+    } else if (PandM == true) {
+        input[2].value = A;
+        PandM = false;
+    }
+})
+
 const result = document.querySelector("#result");
 let resultNum;
 result.addEventListener("click", () => {
@@ -150,6 +172,13 @@ result.addEventListener("click", () => {
         } else {
             input[2].value = num1 / num2;
         } break;
+
+        case 5: if (num1 / num2 > 9) {
+            input[2].style.fontSize = "40px";
+            input[2].value = num1 ** num2;
+        } else {
+            input[2].value = num1 ** num2;
+        } break;
     }
 
     num.value = ``;
@@ -172,3 +201,4 @@ del.addEventListener("click", () => {
     delResult = input[2].value.slice(-input[2].value.length, input[2].value.length - 1);
     input[2].value = delResult;
 });
+
