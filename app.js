@@ -3,7 +3,7 @@ let num1;
 let num2;
 
 function maxlength() {
-    if (input.value.length >= 10) {
+    if (input.value.length >= 9) {
         alert("숫자는 9자릿수를 넘을수 없습니다.");
         일부러낸오류코드;
     };
@@ -108,4 +108,17 @@ result.addEventListener("click", () => {
             break;
     }
 
+})
+
+const clear = document.querySelector("#C");
+clear.addEventListener("click", () => {
+    num1 = 0;
+    num2 = 0;
+    input.value = ``;
+})
+
+const del = document.querySelector("#del");
+del.addEventListener("click", () => {
+    delResult = input.value.slice(-input.value.length, input.value.length - 1);
+    input.value = delResult;
 })
