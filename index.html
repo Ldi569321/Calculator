@@ -15,46 +15,46 @@
 <body>
     <div class="calculator">
         <table>
-            <tr>
+            <tr class="before">
                 <th colspan="4">
+                    <input type="text" id="num" value="">
+                </th>
+            </tr>
+            <tr>
+                <th><input type="text" id="sighInner" value=""></th>
+                <th colspan="3">
                     <input type="text" value="" maxlength="6" 
                     oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
                 </th>
             </tr>
             <tr>
-                <td id="percent">%</td>
-                <td id="CE">CE</td>
+                <td id="jum">.</td>
+                <td id="squared">x^2</td>
                 <td id="C">C</td>
                 <td id="del">Delete</td>
-            </tr>
-            <tr>
-                <td id="1/x">1/x</td>
-                <td id="squared">x^2</td>
-                <td id="root">2√x</td>
-                <td id="devide">÷</td>
             </tr>
             <tr>
                 <td id="seven">7</td>
                 <td id="eight">8</td>
                 <td id="nine">9</td>
-                <td id="multifly">×</td>
+                <td id="plus/minus">+/-</td>
             </tr>
             <tr>
                 <td id="four">4</td>
                 <td id="five">5</td>
                 <td id="six">6</td>
-                <td id="minus">-</td>
+                <td id="devide">÷</td>
             </tr>
             <tr>
                 <td id="one">1</td>
                 <td id="two">2</td>
                 <td id="three">3</td>
-                <td id="plus">+</td>
+                <td id="multifly">×</td>
             </tr>
             <tr>
-                <td id="p/m">+/-</td>
+                <td id="plus">+</td>
                 <td id="zero">0</td>
-                <td id="jum">.</td>
+                <td id="minus">-</td>
                 <td id="result">=</td>
             </tr>
         </table>
