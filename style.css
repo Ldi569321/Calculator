@@ -22,16 +22,34 @@ tr th:nth-of-type(1) {
     color: white;
 }
 
-tr th input{
+tr th input {
+    border: 0;
     background-color: transparent;
-    border: transparent;
+}
+
+.before {
+    height: 50px;
     padding: 0px;
     width: 100%;
     text-align: end;
-    height: 100%;
-    font-size: 65px;
+}
+
+.gray {
+    color: gray;
+    font-size: 35px;
+}
+
+.white {
     color: white;
-    border: 1px solid black;
+}
+
+table tr th input {
+    height: 100%;
+    font-size: 52px;
+    padding: 0px;
+    margin: 0px;
+    width: 100%;
+    text-align: end;
 }
 
 tr th input:focus {

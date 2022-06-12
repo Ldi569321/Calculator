@@ -69,6 +69,17 @@ zero.addEventListener("click", () => {
     input[2].value += `0`;
 });
 
+const jum = document.querySelector("#jum");
+jum.addEventListener("click", () => {
+    if (input[2].value.length <= 0) {
+        input[2].value += `0.`;
+    } else {
+        maxlength()
+        input[2].value += `.`;
+    }
+});
+
+
 let sign = 0;
 let num = document.querySelector("#num");
 const plus = document.querySelector("#plus");
@@ -112,15 +123,35 @@ let resultNum;
 result.addEventListener("click", () => {
     num2 = (Number(input[2].value));
     switch (sign) {
-        case 1: input[2].value = num1 + num2;
-            break;
-        case 2: input[2].value = num1 - num2;
-            break;
-        case 3: input[2].value = num1 * num2;
-            break;
-        case 4: input[2].value = num1 / num2;
-            break;
+        case 1: if (num1 + num2 > 9) {
+            input[2].style.fontSize = "40px";
+            input[2].value = num1 + num2;
+        } else {
+            input[2].value = num1 + num2;
+        } break;
+
+        case 2: if (num1 - num2 > 9) {
+            input[2].style.fontSize = "40px";
+            input[2].value = num1 - num2;
+        } else {
+            input[2].value = num1 - num2;
+        } break;
+
+        case 3: if (num1 * num2 > 9) {
+            input[2].style.fontSize = "40px";
+            input[2].value = num1 * num2;
+        } else {
+            input[2].value = num1 * num2;
+        } break;
+
+        case 4: if (num1 / num2 > 9) {
+            input[2].style.fontSize = "40px";
+            input[2].value = num1 / num2;
+        } else {
+            input[2].value = num1 / num2;
+        } break;
     }
+
     num.value = ``;
     input[1].value = ``;
 
@@ -130,6 +161,9 @@ const clear = document.querySelector("#C");
 clear.addEventListener("click", () => {
     num1 = 0;
     num2 = 0;
+    num.value = ``;
+    input[0].value = ``;
+    input[1].value = ``;
     input[2].value = ``;
 })
 
@@ -137,4 +171,4 @@ const del = document.querySelector("#del");
 del.addEventListener("click", () => {
     delResult = input[2].value.slice(-input[2].value.length, input[2].value.length - 1);
     input[2].value = delResult;
-})
+});
