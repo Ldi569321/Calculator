@@ -63,10 +63,49 @@ nine.addEventListener("click", () => {
     input.value += `9`;
 });
 
+let sign = 0;
+
 const plus = document.querySelector("#plus");
 plus.addEventListener("click", () => {
-    num1 = input.value;
-    input.value = 0;
+    num1 = (Number(input.value));
+    input.value = ``;
+    sign = 1;
 })
 
+const minus = document.querySelector("#minus");
+minus.addEventListener("click", () => {
+    num1 = (Number(input.value));
+    input.value = ``;
+    sign = 2;
+})
 
+const multifly = document.querySelector("#multifly")
+multifly.addEventListener("click", () => {
+    num1 = (Number(input.value));
+    input.value = ``;
+    sign = 3;
+})
+
+const devide = document.querySelector("#devide");
+devide.addEventListener("click", () => {
+    num1 = (Number(input.value));
+    input.value = ``;
+    sign = 4;
+})
+
+const result = document.querySelector("#result");
+let resultNum;
+result.addEventListener("click", () => {
+    num2 = (Number(input.value));
+    switch (sign) {
+        case 1: input.value = num1 + num2;
+            break;
+        case 2: input.value = num1 - num2;
+            break;
+        case 3: input.value = num1 * num2;
+            break;
+        case 4: input.value = num1 / num2;
+            break;
+    }
+
+})
