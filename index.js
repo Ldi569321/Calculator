@@ -8,12 +8,11 @@ function createWindow () {
     maxWidth: 400,
     height: 600,
     maxHeight: 600,
-
     webPreferences: {
-      preload: path.join(__dirname, 'preload.js')
+      preload: path.join(__dirname, 'preload.js'),
     }
   })
- 
+  win.setMenu(null)
   win.loadFile('index.html')
 }
 
