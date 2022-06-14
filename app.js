@@ -4,53 +4,24 @@ let num2;
 
 //숫자 넣는 부분
 function Calculation(InnerNumber) {
-    maxlength()
-    input[2].value += InnerNumber;
-};
-
-function maxlength() {
     if (input[2].value.length >= 9) {
         alert("숫자는 9자릿수를 넘을수 없습니다.");
-        일부러낸오류코드;
-    };
+    } else {
+    input[2].value += InnerNumber;
+};
 };
 
-const one = document.querySelector("#one");
-one.addEventListener("click", () => {Calculation(1)});
-
-const two = document.querySelector("#two");
-two.addEventListener("click", () => (Calculation(2)));
-
-const three = document.querySelector("#three");
-three.addEventListener("click", () => {Calculation(3)});
-
-const four = document.querySelector("#four");
-four.addEventListener("click", () => {Calculation(4)});
-
-const five = document.querySelector("#five");
-five.addEventListener("click", () => {Calculation(5)});
-
-const six = document.querySelector("#six");
-six.addEventListener("click", () => {Calculation(6)});
-
-const seven = document.querySelector("#seven");
-seven.addEventListener("click", () => {Calculation(7)});
-
-const eight = document.querySelector("#eight");
-eight.addEventListener("click", () => {Calculation(8)});
-
-const nine = document.querySelector("#nine");
-nine.addEventListener("click", () => {Calculation(9)});
-
-const zero = document.querySelector("#zero");
-zero.addEventListener("click", () => {Calculation(0)});
+const clickNum = document.querySelectorAll("#number")
+clickNum.forEach((numberTable, j) => {
+    numberTable.addEventListener("click", () => {Calculation(j)});
+});
 
 const jum = document.querySelector("#jum");
 jum.addEventListener("click", () => {
     if (input[2].value.length <= 0) {
         input[2].value += `0.`;
     } else {
-        maxlength()
+        maxlength();
         input[2].value += `.`;
     }
 });
@@ -58,6 +29,7 @@ jum.addEventListener("click", () => {
 //숫자 계산 부호 부분
 let sign = 0;
 let num = document.querySelector("#num");
+let signArray = [`**`, `/`, `*`, `+`, `-`];
 function signResult(signValue, innersign) {
     num1 = (Number(input[2].value));
     input[1].value = signValue;
@@ -66,20 +38,10 @@ function signResult(signValue, innersign) {
     sign = innersign;
 };
 
-const plus = document.querySelector("#plus");
-plus.addEventListener("click", () => {signResult(`+`, 1)});
-
-const minus = document.querySelector("#minus");
-minus.addEventListener("click", () => {signResult(`-`, 2)});
-
-const multifly = document.querySelector("#multifly")
-multifly.addEventListener("click", () => {signResult(`×`, 3);});
-
-const devide = document.querySelector("#devide");
-devide.addEventListener("click", () => {signResult(`÷`, 4)});
-
-const squared = document.querySelector("#squared");
-squared.addEventListener("click", () => {signResult(`^`, 5)});
+const signSymbol = document.querySelectorAll("#signSymbol");
+signSymbol.forEach((signTable, i) => {
+    signTable.addEventListener("click", () => {signResult(`${signArray[i]}`, i)});
+});
 
 const plusAndMinus = document.querySelector("#plusAndMinus")
 PandM = false;
@@ -98,42 +60,8 @@ plusAndMinus.addEventListener("click", () => {
 const result = document.querySelector("#result");
 result.addEventListener("click", () => {
     num2 = (Number(input[2].value));
-    switch (sign) {
-        case 1: if (num1 + num2 > 9) {
-            input[2].style.fontSize = "40px";
-            input[2].value = num1 + num2;
-        } else {
-            input[2].value = num1 + num2;
-        } break;
-
-        case 2: if (num1 - num2 > 9) {
-            input[2].style.fontSize = "40px";
-            input[2].value = num1 - num2;
-        } else {
-            input[2].value = num1 - num2;
-        } break;
-
-        case 3: if (num1 * num2 > 9) {
-            input[2].style.fontSize = "40px";
-            input[2].value = num1 * num2;
-        } else {
-            input[2].value = num1 * num2;
-        } break;
-
-        case 4: if (num1 / num2 > 9) {
-            input[2].style.fontSize = "40px";
-            input[2].value = num1 / num2;
-        } else {
-            input[2].value = num1 / num2;
-        } break;
-
-        case 5: if (num1 ** num2 > 9) {
-            input[2].style.fontSize = "40px";
-            input[2].value = num1 ** num2;
-        } else {
-            input[2].value = num1 ** num2;
-        } break;
-    };
+    let sum = new Function('a', 'b', `return a ${signArray[sign]} b`);
+    input[2].value = sum(num1, num2);
     num.value = ``;
     input[1].value = ``;
 });

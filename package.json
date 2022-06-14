@@ -5,10 +5,13 @@
   "main": "index.js",
   "scripts": {
     "start": "electron .",
-    "deploy:osx": "electron-builder --mac",
-    "deploy:win": "npm run deploy:win32 && npm run deploy:win64",
-    "deploy:win32": "electron-builder --win nsis:ia32",
-    "deploy:win64": "electron-builder --win nsis:x64"
+    "build:osx": "electron-builder --mac",
+    "build:linux": "npm run build:linux32 && npm run build:linux64",
+    "build:linux32": "electron-builder --linux --ia32",
+    "build:linux64": "electron-builder --linux --x64",
+    "build:win": "npm run build:win32 && npm run build:win64", 
+    "build:win32": "electron-builder --win portable --ia32",
+    "build:win64": "electron-builder --win portable --x64"
   },
   "build": {
     "productName": "계산기(이동인)",
@@ -23,6 +26,7 @@
       "title": "Calculator"
     },
     "win": {
+      "icon": "./padaeng.png",
       "target": [
         {
           "target": "nsis",
@@ -48,6 +52,7 @@
   "license": "ISC",
   "devDependencies": {
     "electron": "^17.1.1",
-    "electron-builder": "^22.14.13"
+    "electron-builder": "^22.14.13",
+    "electron-packager": "^15.5.1"
   }
 }
